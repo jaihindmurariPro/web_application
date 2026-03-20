@@ -3,55 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Pro | Home</title>
+    <title>Nexus Digital | Modern Experience</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">Brand<span>Visual</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button id="theme-toggle">Toggle Dark Mode</button>
-        </nav>
+    <div class="blob"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">NEXUS<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#work">Our Work</a></li>
+            <li><a href="#services">Services</a></li>
+        </ul>
+        <button class="btn-contact" id="openModal">Get Started</button>
+    </nav>
+
+    <header id="home" class="hero section fade-in">
+        <h1>Building Digital <span class="gradient-text">Masterpieces</span></h1>
+        <p>Interactive, high-performance web experiences designed for the next generation of users.</p>
+        <div class="hero-btns">
+            <button class="primary-btn">Explore Portfolio</button>
+            <button class="secondary-btn" id="theme-toggle">Change Vibe</button>
+        </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Design the Future</h1>
-            <p>A fully responsive, interactive experience built with clean code.</p>
-            <button class="btn-main" onclick="showAlert()">Get Started</button>
-        </div>
-    </section>
-
-    <section id="features" class="features">
-        <h2>Our Core Features</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Responsive</h3>
-                <p>Looks great on mobile, tablet, and desktop.</p>
+    <section id="work" class="section fade-in">
+        <h2 class="section-title">Selected Projects</h2>
+        <div class="grid">
+            <div class="project-card">
+                <div class="card-img"></div>
+                <div class="card-info">
+                    <h3>AI Dashboard</h3>
+                    <p>Interface Design</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Interactive</h3>
-                <p>JS-powered elements for a better UX.</p>
+            <div class="project-card">
+                <div class="card-img blue"></div>
+                <div class="card-info">
+                    <h3>Fintech App</h3>
+                    <p>Mobile Solution</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <form id="contactForm">
-            <h2>Connect With Us</h2>
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message"></textarea>
-            <button type="submit">Send Message</button>
-            <p id="form-status"></p>
-        </form>
-    </section>
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Let's Talk</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Tell us about your project"></textarea>
+                <button type="submit" class="primary-btn">Send Proposal</button>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
