@@ -1,0 +1,89 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333;
+    --accent-color: #007bff;
+    --card-bg: #f4f4f4;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f4f4f4;
+    --card-bg: #333;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s ease;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--accent-color);
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+/* Hero Section */
+.hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    color: white;
+}
+
+/* Cards */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Form */
+#contact {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
