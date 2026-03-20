@@ -3,66 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Digital | Modern Experience</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>NexTrade | Pro Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-gray-900 text-gray-100 font-sans overflow-hidden">
 
-    <div class="blob"></div>
-
-    <nav class="glass-nav">
-        <div class="logo">NEXUS<span>.</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#work">Our Work</a></li>
-            <li><a href="#services">Services</a></li>
-        </ul>
-        <button class="btn-contact" id="openModal">Get Started</button>
+    <nav class="border-b border-gray-800 p-4 flex justify-between items-center bg-gray-900">
+        <div class="flex items-center space-x-8">
+            <h1 class="text-xl font-bold text-blue-500 tracking-tighter">NEXTRADE</h1>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-400">
+                <a href="#" class="hover:text-white border-b-2 border-blue-500 pb-1">Trade</a>
+                <a href="#" class="hover:text-white">Portfolio</a>
+                <a href="#" class="hover:text-white">Markets</a>
+                <a href="#" class="hover:text-white">Analysis</a>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span class="text-green-500 text-sm"><i class="fas fa-circle text-xs mr-2"></i>Market Open</span>
+            <button class="bg-gray-800 p-2 rounded-full hover:bg-gray-700"><i class="fas fa-bell"></i></button>
+            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">JD</div>
+        </div>
     </nav>
 
-    <header id="home" class="hero section fade-in">
-        <h1>Building Digital <span class="gradient-text">Masterpieces</span></h1>
-        <p>Interactive, high-performance web experiences designed for the next generation of users.</p>
-        <div class="hero-btns">
-            <button class="primary-btn">Explore Portfolio</button>
-            <button class="secondary-btn" id="theme-toggle">Change Vibe</button>
-        </div>
-    </header>
+    <div class="flex h-screen">
+        <aside class="w-80 border-r border-gray-800 flex flex-col">
+            <div class="p-4 border-b border-gray-800">
+                <input type="text" placeholder="Search Ticker..." class="w-full bg-gray-800 border-none rounded-md py-2 px-4 text-sm focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div id="watchlist" class="flex-1 overflow-y-auto">
+                </div>
+        </aside>
 
-    <section id="work" class="section fade-in">
-        <h2 class="section-title">Selected Projects</h2>
-        <div class="grid">
-            <div class="project-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <h3>AI Dashboard</h3>
-                    <p>Interface Design</p>
+        <main class="flex-1 flex flex-col">
+            <div class="p-6 border-b border-gray-800 flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold" id="active-symbol">AAPL</h2>
+                    <p class="text-gray-400 text-sm">Apple Inc. · NASDAQ</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-3xl font-mono" id="active-price">$182.45</p>
+                    <p class="text-green-500 text-sm font-medium">+1.24 (0.68%)</p>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="card-img blue"></div>
-                <div class="card-info">
-                    <h3>Fintech App</h3>
-                    <p>Mobile Solution</p>
+
+            <div class="flex-1 bg-gray-950 relative flex items-center justify-center">
+                <div class="absolute top-4 left-4 flex space-x-2">
+                    <button class="bg-gray-800 px-3 py-1 rounded text-xs">1H</button>
+                    <button class="bg-blue-600 px-3 py-1 rounded text-xs">1D</button>
+                    <button class="bg-gray-800 px-3 py-1 rounded text-xs">1W</button>
+                </div>
+                <div class="text-gray-700 italic text-lg">[ Interactive Chart Engine ]</div>
+            </div>
+        </main>
+
+        <aside class="w-80 border-l border-gray-800 p-6">
+            <div class="flex space-x-4 mb-6">
+                <button class="flex-1 py-2 rounded-lg bg-green-600 font-bold hover:bg-green-700">BUY</button>
+                <button class="flex-1 py-2 rounded-lg bg-gray-800 font-bold hover:bg-gray-700">SELL</button>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="text-xs text-gray-400 uppercase">Order Type</label>
+                    <select class="w-full bg-gray-800 border-none rounded-md mt-1">
+                        <option>Market</option>
+                        <option>Limit</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs text-gray-400 uppercase">Amount (USD)</label>
+                    <input type="number" value="1000" class="w-full bg-gray-800 border-none rounded-md mt-1 p-2">
+                </div>
+                <div class="pt-4 border-t border-gray-800">
+                    <div class="flex justify-between text-sm mb-2">
+                        <span class="text-gray-400">Est. Shares</span>
+                        <span>5.48</span>
+                    </div>
+                    <div class="flex justify-between text-sm mb-4">
+                        <span class="text-gray-400">Fee</span>
+                        <span>$0.00</span>
+                    </div>
+                    <button class="w-full bg-blue-600 py-3 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:bg-blue-500 transition">Place Buy Order</button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Let's Talk</h2>
-            <form id="contactForm">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Tell us about your project"></textarea>
-                <button type="submit" class="primary-btn">Send Proposal</button>
-            </form>
-        </div>
+        </aside>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
