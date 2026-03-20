@@ -1,48 +1,43 @@
-// 1. Scroll Reveal Animation
-const observerOptions = { threshold: 0.1 };
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
+const stocks = [
+    { symbol: 'AAPL', price: 182.45, change: '+1.2%' },
+    { symbol: 'TSLA', price: 238.10, change: '-2.4%' },
+    { symbol: 'NVDA', price: 485.20, change: '+4.1%' },
+    { symbol: 'BTC', price: 64200.00, change: '+0.5%' },
+    { symbol: 'MSFT', price: 375.12, change: '+0.8%' }
+];
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// 2. Modal Logic
-const modal = document.getElementById("contactModal");
-const btn = document.getElementById("openModal");
-const span = document.getElementsByClassName("close")[0];
-
-btn.onclick = () => modal.style.display = "block";
-span.onclick = () => modal.style.display = "none";
-window.onclick = (event) => {
-    if (event.target == modal) modal.style.display = "none";
+function initWatchlist() {
+    const list = document.getElementById('watchlist');
+    list.innerHTML = stocks.map(stock => `
+        <div class="p-4 border-b border-gray-800 flex justify-between hover:bg-gray-800 cursor-pointer transition">
+            <div>
+                <p class="font-bold">${stock.symbol}</p>
+                <p class="text-xs text-gray-500 text-uppercase">Equity</p>
+            </div>
+            <div class="text-right">
+                <p class="font-mono">$${stock.price.toFixed(2)}</p>
+                <p class="text-xs ${stock.change.includes('+') ? 'text-green-500' : 'text-red-500'}">${stock.change}</p>
+            </div>
+        </div>
+    `).join('');
 }
 
-// 3. Simple Theme Vibe Switcher
-const themeBtn = document.getElementById('theme-toggle');
-themeBtn.onclick = () => {
-    const root = document.documentElement;
-    const isDark = getComputedStyle(root).getPropertyValue('--bg').trim() === '#0f172a';
-    
-    if (isDark) {
-        root.style.setProperty('--bg', '#f8fafc');
-        root.style.setProperty('--text', '#0f172a');
-        root.style.setProperty('--glass', 'rgba(0, 0, 0, 0.05)');
-        root.style.setProperty('--border', 'rgba(0, 0, 0, 0.1)');
-    } else {
-        root.style.setProperty('--bg', '#0f172a');
-        root.style.setProperty('--text', '#f8fafc');
-        root.style.setProperty('--glass', 'rgba(255, 255, 255, 0.05)');
-        root.style.setProperty('--border', 'rgba(255, 255, 255, 0.1)');
-    }
-};
+// Simulate real-time price flickering
+function simulatePrice() {
+    const priceEl = document.getElementById('active-price');
+    setInterval(() => {
+        const currentPrice = parseFloat(priceEl.innerText.replace('$', ''));
+        const noise = (Math.random() - 0.5) * 0.5;
+        const newPrice = (currentPrice + noise).toFixed(2);
+        priceEl.innerText = `$${newPrice}`;
+        
+        // Visual feedback for change
+        priceEl.style.color = noise > 0 ? '#10b981' : '#ef4444';
+        setTimeout(() => priceEl.style.color = 'white', 500);
+    }, 2000);
+}
 
-// 4. Form Handling
-document.getElementById('contactForm').onsubmit = (e) => {
-    e.preventDefault();
-    alert("Message Received! We'll get back to you shortly.");
-    modal.style.display = "none";
-};
+document.addEventListener('DOMContentLoaded', () => {
+    initWatchlist();
+    simulatePrice();
+});
